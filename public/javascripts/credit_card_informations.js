@@ -1,9 +1,9 @@
-$(document).ready(function() { // quando o jQuery estiver carregado...
+$(document).ready(function () { // quando o jQuery estiver carregado...
     PagarMe.encryption_key = "ek_test_lIJEfPcIBJMKCYn6o6uH6Sm3U4cs67";
 
     var form = $("#payment_form");
 
-    form.submit(function(event) { // quando o form for enviado...
+    form.submit(function (event) { // quando o form for enviado...
         // inicializa um objeto de cartão de crédito e completa
         // com os dados do form
         var creditCard = new PagarMe.creditCard();
@@ -18,14 +18,17 @@ $(document).ready(function() { // quando o jQuery estiver carregado...
 
         //Verifica se há erros
         var hasErrors = false;
-        for(var field in fieldErrors) { hasErrors = true; break; }
+        for (var field in fieldErrors) {
+            hasErrors = true;
+            break;
+        }
 
-        if(hasErrors) {
+        if (hasErrors) {
             // realiza o tratamento de errors
             alert(fieldErrors);
         } else {
             // se não há erros, gera o card_hash...
-            creditCard.generateHash(function(cardHash) {
+            creditCard.generateHash(function (cardHash) {
                 // ...coloca-o no form...
                 form.append($('<input type="hidden" name="card_hash">').val(cardHash));
                 // e envia o form
