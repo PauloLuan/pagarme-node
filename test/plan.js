@@ -10,7 +10,7 @@ describe('Testing Plans EndPoints', function() {
 
 	it('testing /plan/', function(done) {
 		request(utils.url).post('/transaction/credit/')
-		.send(utils.creditCardTest)
+		.send(utils.validCreditCard)
 		.expect(200, 'it works')
 		.end(function(err, res){
 			if(err) {
@@ -23,7 +23,7 @@ describe('Testing Plans EndPoints', function() {
 
 	it('testing /plan/subscriptions/', function(done) {
 		request(utils.url).post('/transaction/boleto/')
-		.send(utils.creditCardTest)
+		.send(utils.validCreditCard)
 		.expect(200, 'it works')
 		.end(function(err, res){
 			if(err) {
@@ -36,7 +36,7 @@ describe('Testing Plans EndPoints', function() {
 
 	it('testing /plan/subscriptions/cancel', function(done) {
 		request(utils.url).post('/transaction/refund/')
-		.send(utils.creditCardTest)
+		.send(utils.validCreditCard)
 		.expect(200, 'it works')
 		.end(function(err, res){
 			if(err) {

@@ -3,8 +3,17 @@
 var utils = {
     url: 'http://localhost:3000',
 
-    creditCardTest: {
+    validCreditCard: {
         card_cvv: '109',
+        card_number: '371382403151296',
+        issuing_network: "American Express",
+        amount: 1000,
+        card_holder_name: 'Paulo Luan Mariano Silva',
+        card_expiration_date: '0120'
+    }, 
+
+    refuseCreditCard: {
+        card_cvv: '609',
         card_number: '371382403151296',
         issuing_network: "American Express",
         amount: 1000,
