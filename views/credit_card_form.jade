@@ -1,0 +1,19 @@
+form#payment_form(action='https://localhost:3000/transactions/new', method='POST')
+  | Número do cartão: 
+  input#card_number(type='text')
+  br
+  |     Nome (como escrito no cartão): 
+  input#card_holder_name(type='text')
+  br
+  |     Mês de expiração: 
+  input#card_expiration_month(type='text')
+  br
+  |     Ano de expiração: 
+  input#card_expiration_year(type='text')
+  br
+  |     Código de segurança: 
+  input#card_cvv(type='text')
+  br
+  #field_errors
+  br
+  input(type='submit')
