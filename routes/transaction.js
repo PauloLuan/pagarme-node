@@ -5,17 +5,17 @@ var router = express.Router();
 
 router.post('/credit', function(req, res){
 	var params = req.body;
-	var id = params.notification_house_id;
+	return res.send('it works');
 });
 
 router.post('/boleto', function(req, res){
 	var params = req.body;
-	var id = params.notification_house_id;
+	return res.send('it works');
 });
 
 router.post('/refund', function(req, res){
 	var params = req.body;
-	var id = params.notification_house_id;
+	return res.send('it works');
 });
 
 module.exports = router;
