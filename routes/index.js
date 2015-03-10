@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'PagarMe - NodeJS API' });
+	res.render('index', { title: 'PagarMe - NodeJS API' });
 });
 
 module.exports = router;
