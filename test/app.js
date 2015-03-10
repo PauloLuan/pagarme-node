@@ -1,19 +1,22 @@
 'use strict';
 
-// import the moongoose helper utilities
 var request = require('supertest');
-var assert = require('assert')
+var should = require('should');
+var async = require('async');
+var utils = require('./utils');
+
 var app = require('../app').app;
-var url = 'http://localhost:3000';
 
-describe('app', function(){
-  it('should be an object', function(){
-    assert(typeof app, 'object');
-  })
+describe('app', function() {
+	it('should be an object', function() {
+		assert(typeof app, 'object');
+	})
 
-  it('should be 200', function(done){
-    request(url)
-      .get('/')
-      .expect(200, done);
-  })
+	it('should be 200', function(done){
+		request(url)
+		.get('/')
+		.should.be.equal(200);
+		//.expect(200, done);
+		done();
+	})
 })
