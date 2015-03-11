@@ -2,6 +2,7 @@
 
 var ursa = require('ursa');
 var request = require('request');
+var keys = require('./keys.json');
 
 var utils = {
 
@@ -75,8 +76,19 @@ var utils = {
         return buffer.toString('base64');
     },
 
-    validateCreditCardData: function(data) {},
-    validateBillData: function(data) {}
+    validateCreditCardData: function(data) {
+        // TODO: validar se cartão é válido e etc
+        if(data.payment_method) delete data.payment_method;
+        data.api_key = keys.api_key;
+        return data;
+    },
+
+    validateBillData: function(data) {
+        // TODO: validar informações?
+        data.payment_method = "boleto";
+        data.api_key = keys.api_key;
+        return data;
+    }
 };
 
 module.exports = utils;
