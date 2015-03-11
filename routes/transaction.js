@@ -61,4 +61,10 @@ router.post('/refund', function (req, res) {
 	}
 });
 
+router.post('/postback', function (req, res) {
+    var params = req.body;
+    // database.update(params);
+    return res.send('Thanks for letting me know! :)');
+});
+
 module.exports = router;
