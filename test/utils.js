@@ -21,6 +21,25 @@ var utils = {
         card_expiration_date: '0120'
     },
 
+    fraudPerson: {
+        name:"John Appleseed",
+        document_number:11111111111, // simula fraude quando o documento é 11111111111
+        email:"jappleseed@apple.com",
+
+        address: {
+            street:"Av. Brigadeiro Faria Lima",
+            neighborhood:"Jardim Paulistano",
+            zipcode: "01452000",
+            street_number:2941,
+            complementary:"8º andar"
+        },
+
+        phone: {
+            ddd:11,
+            number:30713261
+        }
+    },
+
     validCreditCardResponse : {
         object: "transaction",
         status: "paid",
@@ -104,6 +123,54 @@ var utils = {
         address: null,
         customer: null,
         card: null,
+        metadata: {}
+    },
+
+    refundResponse: {
+        object: "transaction",
+        status: "refunded",
+        refuse_reason: null,
+        status_reason: "acquirer",
+        acquirer_response_code: "00",
+        acquirer_name: "development",
+        authorization_code: "604653",
+        soft_descriptor: null,
+        tid: "1426077977741",
+        nsu: "1426077977741",
+        date_created: "2015-03-11T12:46:17.000Z",
+        date_updated: "2015-03-11T17:22:06.000Z",
+        amount: 4990,
+        installments: 1,
+        id: 185827,
+        cost: 0,
+        card_holder_name: "Paulo Luan Mariano Silva",
+        card_last_digits: "0007",
+        card_first_digits: "445700",
+        card_brand: "visa",
+        postback_url: null,
+        payment_method: "credit_card",
+        antifraud_score: null,
+        boleto_url: null,
+        boleto_barcode: null,
+        boleto_expiration_date: null,
+        referer: "api_key",
+        ip: "189.55.109.175",
+        subscription_id: null,
+        phone: null,
+        address: null,
+        customer: null,
+        card: {
+            object: "card",
+            id: "card_ci74q09sx002nqs16xves7ydi",
+            date_created: "2015-03-11T12:46:17.000Z",
+            date_updated: "2015-03-11T12:46:18.000Z",
+            brand: "visa",
+            holder_name: "Paulo Luan Mariano Silva",
+            first_digits: "445700",
+            last_digits: "0007",
+            fingerprint: "pJuL+iaAtw1N",
+            valid: true
+        },
         metadata: {}
     },
 
