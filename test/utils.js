@@ -21,7 +21,7 @@ var utils = {
         card_expiration_date: '0120'
     },
 
-    validResponseExample : {
+    validCreditCardResponse : {
         object: "transaction",
         status: "paid",
         refuse_reason: null,
@@ -66,6 +66,44 @@ var utils = {
             fingerprint: "pJuL+iaAtw1N",
             valid: true
         },
+        metadata: {}
+    },
+
+    validBoletoResponse:
+    {
+        object: "transaction",
+        status: "waiting_payment",
+        refuse_reason: null,
+        status_reason: "acquirer",
+        acquirer_response_code: null,
+        acquirer_name: "development",
+        authorization_code: null,
+        soft_descriptor: null,
+        tid: null,
+        nsu: null,
+        date_created: "2015-03-11T16:01:41.000Z",
+        date_updated: "2015-03-11T16:01:41.000Z",
+        amount: 4990,
+        installments: 1,
+        id: 185905,
+        cost: 0,
+        card_holder_name: null,
+        card_last_digits: null,
+        card_first_digits: null,
+        card_brand: null,
+        postback_url: null,
+        payment_method: "boleto",
+        antifraud_score: null,
+        boleto_url: "https://pagar.me",
+        boleto_barcode: "1234 5678",
+        boleto_expiration_date: "2015-03-18T03:00:00.025Z",
+        referer: "api_key",
+        ip: "189.55.109.175",
+        subscription_id: null,
+        phone: null,
+        address: null,
+        customer: null,
+        card: null,
         metadata: {}
     },
 
