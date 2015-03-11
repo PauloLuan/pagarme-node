@@ -6,6 +6,7 @@ var request = require('request');
 var async = require('async');
 
 var utils = require('../utils/utils.js');
+var keys = require('../utils/keys.json');
 
 var api_url = 'https://api.pagar.me/1/transactions/';
 
@@ -27,14 +28,40 @@ router.post('/boleto', function (req, res) {
 
 	params = utils.validateBillData(params);
 
-    request.post({ url: api_url, form: params }, function (error, response, body) {
-        return res.send(body);
-    });
+	request.post({ url: api_url, form: params }, function (error, response, body) {
+		return res.send(body);
+	});
 });
 
 router.post('/refund', function (req, res) {
 	var params = req.body;
-	return res.send('it works');
+
+	var id = params.id;
+
+	if(id) {
+		var url = api_url + id + "/refund/";
+		params.api_key = keys.api_key;
+
+		request.post({ url: url, form: params }, function (error, response, body) {
+			console.log(body);
+			return res.send(body);
+		});
+	}
+	else {
+		var error = {
+			"errors": [
+			{
+				"type": "missing_parameters",
+				"parameter_name": "id",
+				"message": "coloque o id na requisição"
+			}],
+			"url": "/transactions/refund",
+			"method": "post"
+		}
+
+		console.log(error);
+		return res.send(JSON.stringify(error));
+	}
 });
 
 module.exports = router;
