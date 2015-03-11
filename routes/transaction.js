@@ -35,7 +35,6 @@ router.post('/boleto', function (req, res) {
 
 router.post('/refund', function (req, res) {
 	var params = req.body;
-
 	var id = params.id;
 
 	if(id) {
@@ -43,7 +42,6 @@ router.post('/refund', function (req, res) {
 		params.api_key = keys.api_key;
 
 		request.post({ url: url, form: params }, function (error, response, body) {
-			console.log(body);
 			return res.send(body);
 		});
 	}
@@ -59,7 +57,6 @@ router.post('/refund', function (req, res) {
 			"method": "post"
 		}
 
-		console.log(error);
 		return res.send(JSON.stringify(error));
 	}
 });
