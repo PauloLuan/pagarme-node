@@ -17,9 +17,7 @@ router.post('/credit', function (req, res) {
 		params.card_hash = card_hash;
 
 		request.post({ url: api_url, form: params }, function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-				return res.send(body);
-			}
+			return res.send(body);
 		});
 	});
 });
@@ -30,12 +28,6 @@ router.post('/boleto', function (req, res) {
 	params = utils.validateBillData(params);
 
     request.post({ url: api_url, form: params }, function (error, response, body) {
-        console.log(error, response, body);
-
-        if (!error && response.statusCode == 200) {
-            return res.send(body);
-        }
-
         return res.send(body);
     });
 });
