@@ -4,10 +4,10 @@ var utils = {
     url: 'http://localhost:3000',
 
     validCreditCard: {
-        card_cvv: '109',
-        card_number: '371382403151296',
-        issuing_network: "American Express",
-        amount: 1000,
+        card_cvv: '901',
+        card_number: '4457000300000007',
+        issuing_network: "Visa",
+        amount: 4990,
         card_holder_name: 'Paulo Luan Mariano Silva',
         card_expiration_date: '0120'
     },
@@ -16,7 +16,7 @@ var utils = {
         card_cvv: '609',
         card_number: '371382403151296',
         issuing_network: "American Express",
-        amount: 1000,
+        amount: 13880,
         card_holder_name: 'Paulo Luan Mariano Silva',
         card_expiration_date: '0120'
     },
