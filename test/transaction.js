@@ -1,49 +1,49 @@
 'use strict';
 
-var request = require('supertest');
+var request = require('request');
 var should = require('should');
-var assert = require('assert');
-var async = require('async');
 var utils = require('./utils');
 
 describe('Testing Transaction EndPoints', function () {
 
     it('testing /transaction/credit/', function (done) {
-        request(utils.url).post('/transaction/credit/')
-            .send(utils.validCreditCard)
-            .expect(200, 'it works')
-            .end(function (err, res) {
-                if (err) {
-                    done(err);
-                } else {
-                    done();
-                }
-            });
+        this.timeout(0);
+        request.post(utils.url + 'transaction/credit/',
+            { form: utils.validCreditCard },
+
+            function (error, response, body) {
+                var json_body = JSON.parse(body);
+                should(error).not.be.ok;
+                response.statusCode.should.equal(200);
+                json_body.should.have.property('status', 'paid');
+
+                done();
+            }
+        );
     });
 
     it('testing /transaction/boleto/', function (done) {
-        request(utils.url).post('/transaction/boleto/')
-            .send(utils.validCreditCard)
-            .expect(200, 'it works')
-            .end(function (err, res) {
-                if (err) {
-                    done(err);
-                } else {
-                    done();
-                }
-            });
+        this.timeout(0);
+        request.post(utils.url + 'transaction/boleto/',
+            { form: utils.validCreditCard },
+
+            function (error, response, body) {
+                response.statusCode.should.equal(200);
+                done();
+            }
+        );
     });
 
     it('testing /transaction/refund/', function (done) {
-        request(utils.url).post('/transaction/refund/')
-            .send(utils.validCreditCard)
-            .expect(200, 'it works')
-            .end(function (err, res) {
-                if (err) {
-                    done(err);
-                } else {
-                    done();
-                }
-            });
+        this.timeout(0);
+        request.post(utils.url + 'transaction/refund/',
+            { form: utils.validCreditCard },
+
+            function (error, response, body) {
+                response.statusCode.should.equal(200);
+                done();
+            }
+        );
     });
+
 });

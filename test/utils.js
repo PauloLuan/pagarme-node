@@ -1,7 +1,7 @@
 'use strict';
 
 var utils = {
-    url: 'http://localhost:3000',
+    url: 'http://localhost:3000/',
 
     validCreditCard: {
         card_cvv: '901',
