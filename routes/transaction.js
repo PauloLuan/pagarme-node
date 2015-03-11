@@ -16,16 +16,6 @@ router.post('/credit', function (req, res) {
 
 	validateCreditCardData(params);
 
-	/*async.waterfall([
-        function(next){
-            next(null, 'card_hash de teste');
-        },
-        function(card_hash, next){
-            console.log(card_hash)
-            next();
-        }
-    ], function (err, result) {});*/
-
 	getKeyForTransaction(params, function(card_hash){
 		params.card_hash = card_hash;
 
