@@ -1,8 +1,29 @@
 'use strict';
 
 var ursa = require('ursa');
+var request = require('request');
 
 var utils = {
+
+    api_url: 'https://api.pagar.me/1/transactions/',
+
+    /*
+        TODO: armazenar os dados da chave pública, pois aparentemente é o
+        mesmo a cada requisição.
+    */
+    getKeyForTransaction: function(params, callback) {
+        var key_url = utils.api_url + 'card_hash_key';
+
+        request.get({ url: key_url, form: params }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var body_json = JSON.parse(body);
+                var card_hash = utils.generateCardHash(body_json, params);
+                callback(card_hash);
+            } else {
+                callback(null);
+            }
+        });
+    },
 
     /*
         Segue os passos descritos na documentação (https://pagar.me/docs_legacy/restful-api/card-hash/)
@@ -52,7 +73,10 @@ var utils = {
         }
 
         return buffer.toString('base64');
-    }
+    },
+
+    validateCreditCardData: function(data) {},
+    validateBillData: function(data) {}
 };
 
 module.exports = utils;
