@@ -78,7 +78,7 @@ var utils = {
 
     validateCreditCardData: function(data) {
         // TODO: validar se cartão é válido e etc
-        if(data.payment_method) delete data.payment_method;
+        data.payment_method = "credit_card";
         data.api_key = keys.api_key;
         return data;
     },
@@ -86,6 +86,33 @@ var utils = {
     validateBillData: function(data) {
         // TODO: validar informações?
         data.payment_method = "boleto";
+        data.api_key = keys.api_key;
+        return data;
+    },
+
+    validateSubscriptionData: function(data) {
+        // must have:
+        // plan_id
+        // customer[email]
+        // api_key
+        // card_hash
+
+        if(!data.plan_id) throw new Error("Esqueceu o id do plano");
+
+        data.api_key = keys.api_key;
+        return data;
+    },
+
+    validatePlanData: function(data) {
+        /*
+        MUST HAVE:
+
+        'api_key=ak_test_grXijQ4GicOa2BLGZrDRTR5qNQxJW0' \
+        'amount=4990' \
+        'days=30' \
+        'name=Plano Mensal'
+        */
+
         data.api_key = keys.api_key;
         return data;
     }
