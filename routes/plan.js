@@ -16,7 +16,6 @@ router.post('/', function (req, res) {
     params = utils.validatePlanData(params);
 
     request.post({ url: plan_url, form: params }, function (error, response, body) {
-        console.log(body);
         return res.send(body);
     });
 });
@@ -29,7 +28,6 @@ router.post('/subscriptions/', function (req, res) {
         params.card_hash = card_hash;
 
         request.post({ url: subscription_url, form: params }, function (error, response, body) {
-            console.log(body);
             return res.send(body);
         });
     });
@@ -44,7 +42,6 @@ router.post('/subscriptions/cancel', function (req, res) {
         params.api_key = keys.api_key;
 
         request.post({ url: url, form: params }, function (error, response, body) {
-            console.log(body);
             return res.send(body);
         });
     }
@@ -60,19 +57,17 @@ router.post('/subscriptions/cancel', function (req, res) {
             "method": "post"
         }
 
-        console.log(body);
         return res.send(JSON.stringify(error));
     }
 });
 
 router.post('/subscriptions/postback', function (req, res) {
     /*
-        TODO: em um ambiente real ele faria alguma modificação no banco,
-        indicando o novo status.
+    TODO: em um ambiente real ele faria alguma modificação no banco,
+    indicando o novo status.
     */
     var params = req.body;
     // database.update(params);
-    console.log(body);
     return res.send('Thanks for letting me know! :)');
 });
 
