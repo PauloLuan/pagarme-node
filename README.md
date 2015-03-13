@@ -18,7 +18,7 @@ You must have to use [nodejs](http://nodejs.org/) version 0.10.x. If you not hav
 
     # download and configure Node Version Manager
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash && \
-    source /root/.nvm/nvm.sh && \
+    source ~/.nvm/nvm.sh && \
     nvm install stable && nvm use stable && nvm alias default stable && \
     node -v
 
